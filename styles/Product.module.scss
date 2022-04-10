@@ -18,6 +18,8 @@ section.product {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
+        max-width: 1300px;
+        margin: auto;
 
         > div {
             width: 50%;

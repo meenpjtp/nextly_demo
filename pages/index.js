@@ -1,7 +1,28 @@
-// import Head from "next/head";
-// import Image from "next/image";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
+
+// import AdapterDateFns from "@mui/lab/AdapterMoment";
+// import LocalizationProvider from "@mui/lab/LocalizationProvider";
+// import MobileDatePicker from "@mui/lab/MobileDatePicker";
+
+// import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+// import { CalendarPicker } from "@mui/x-date-pickers/CalendarPicker";
+// import { MonthPicker } from "@mui/x-date-pickers/MonthPicker";
+// import { YearPicker } from "@mui/x-date-pickers/YearPicker";
+// import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
+// import isWeekend from 'date-fns/isWeekend';
+
+// import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { CalendarPicker } from '@mui/x-date-pickers/CalendarPicker';
+// import { MonthPicker } from '@mui/x-date-pickers/MonthPicker';
+// import { YearPicker } from '@mui/x-date-pickers/YearPicker';
+// import Grid from "@mui/material/Grid";
+
 import Button from "@mui/material/Button";
 import styles from "../styles/Home.module.scss";
 
@@ -14,6 +35,7 @@ import JobPixel from "../components/Product";
 import Vendoo from "../components/Product";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Home() {
     const vendoo = `<span>Vendoo</span> is an e-commerce platform 
@@ -67,7 +89,11 @@ export default function Home() {
     internationally renowned names such as the <span>UN</span> & the <span>IOC.</span>`;
 
     const team_2 = `We’re more than proud of the +70,000 hours we’ve worked to deliver succesful 
-    digital products in different industries. <span>See some of it.</span>`;
+    digital products in different industries. <span>See some of it.</span> <img src="/img/arrow.svg"/>`;
+
+    const bannerText = `We’re bringing
+    software development
+    to the <span>next</span> level.`;
 
     let easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -125,22 +151,100 @@ export default function Home() {
         },
     };
 
+    // const [value, setValue] = useState<Date | null>(new Date());
+    // const [value, setValue] = useState(new Date());
+    // const minDate = new Date("2020-01-01T00:00:00.000");
+    // const maxDate = new Date("2034-01-01T00:00:00.000");
+
     return (
         <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
             <section className={styles.home}>
-                <motion.div variants={stagger}>
-                    <div>
-                        <motion.h1 variants={fadeInUp}>{`We’re bringing 
-                    software development 
-                    to the next level.`}</motion.h1>
-                        <motion.h3 variants={fadeInUp}>
-                            Talk to our Business Specialist!
-                        </motion.h3>
-                    </div>
-                    <motion.button variants={fadeInUp}>
-                        Schedule a meeting
-                    </motion.button>
-                </motion.div>
+                <div className={styles.container}>
+                    <motion.div variants={stagger} className={styles.box_left}>
+                        <div>
+                            <motion.h1
+                                variants={fadeInUp}
+                                dangerouslySetInnerHTML={{ __html: bannerText }}
+                                className={styles.banner_text}
+                            ></motion.h1>
+                            <motion.h3
+                                variants={fadeInUp}
+                                className={styles.desktop}
+                            >
+                                Talk to our Business Specialist!
+                            </motion.h3>
+                            <motion.h3
+                                variants={fadeInUp}
+                                className={styles.mobile}
+                            >
+                                Meet with Nexly Specialist!
+                            </motion.h3>
+                        </div>
+                        <motion.button
+                            variants={fadeInUp}
+                            className={styles.desktop}
+                        >
+                            Schedule a meeting
+                        </motion.button>
+                    </motion.div>
+                    <motion.div className={styles.box_right}>
+                        <motion.img
+                            src="/img/calendar.svg"
+                            alt=""
+                            srcSet=""
+                            variants={fadeRight}
+                        />
+                        {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <StaticDatePicker
+                            displayStaticWrapperAs="desktop"
+                            value={value}
+                            onChange={(newValue) => {
+                                setValue(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider> */}
+                        {/* <LocalizationProvider
+                                                dateAdapter={AdapterDateFns}
+                                            >
+                                                <MobileDatePicker
+                                                    value={value}
+                                                    // onChange={onChange}
+                                                    helperText="moment"
+                                                    inputFormat="D MMMM, YYYY"
+                                                    renderInput={(params) => (
+                                                        <TextField
+                                                            {...params}
+                                                        />
+                                                    )}
+                                                />
+                                            </LocalizationProvider> */}
+                        {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <CalendarPicker
+                            date={value}
+                            onChange={(newDate) => setDate(newDate)}
+                        />
+                    </LocalizationProvider> */}
+
+                        {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <StaticDatePicker
+        orientation="landscape"
+        openTo="day"
+        value={value}
+        shouldDisableDate={isWeekend}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        renderInput={(params) => <TextField {...params} />}
+      />
+    </LocalizationProvider> */}
+                        {/* <LocalizationProvider>
+    <Grid item xs={12} md={6}>
+          <CalendarPicker date={value} onChange={(newDate) => setDate(newDate)} />
+        </Grid>
+        </LocalizationProvider> */}
+                    </motion.div>
+                </div>
             </section>
 
             <motion.section
@@ -151,7 +255,12 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.8 }}
             >
                 <div className={styles.box_top}>
-                    <motion.img  variants={animOpacity} src="/img/bg.svg" alt="" srcSet="" />
+                    <motion.img
+                        variants={animOpacity}
+                        src="/img/bg.svg"
+                        alt=""
+                        srcSet=""
+                    />
                     <div>
                         <motion.h2
                             variants={fadeInUp}
@@ -160,10 +269,12 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={styles.box_below}>
-                    <motion.h4
-                        variants={fadeInUp}
-                        dangerouslySetInnerHTML={{ __html: team_2 }}
-                    ></motion.h4>
+                    <div className={styles.container}>
+                        <motion.h4
+                            variants={fadeInUp}
+                            dangerouslySetInnerHTML={{ __html: team_2 }}
+                        ></motion.h4>
+                    </div>
                 </div>
             </motion.section>
 

@@ -1,4 +1,4 @@
-import styles from '../../styles/Footer.module.scss'
+import styles from "../../styles/Footer.module.scss";
 
 const Footer = () => (
     <footer className={styles.footer}>
@@ -25,10 +25,26 @@ const Footer = () => (
                     <span>Follow Us</span>
                     <ul className={styles.follow}>
                         <li>
-                            <img src="/img/ic-ig.svg" alt="" srcSet="" />
+                            <a
+                                href="#"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img src="/img/ic-ig.svg" alt="" srcSet="" />
+                            </a>
                         </li>
                         <li>
-                            <img src="/img/ic-linkin.svg" alt="" srcSet="" />
+                            <a
+                                href="#"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src="/img/ic-linkin.svg"
+                                    alt=""
+                                    srcSet=""
+                                />
+                            </a>
                         </li>
                     </ul>
                 </div>
