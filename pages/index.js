@@ -1,11 +1,9 @@
-import Head from "next/head";
-import Image from "next/image";
+// import Head from "next/head";
+// import Image from "next/image";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-// import Button from "../components/button/Button";
 import Button from "@mui/material/Button";
 import styles from "../styles/Home.module.scss";
-import footer from "../styles/Footer.module.scss";
 
 import { dataSpecialties } from "../data/specialties";
 import Jonathan from "../components/Person";
@@ -14,6 +12,8 @@ import Gustavo from "../components/Person";
 import Descola from "../components/Product";
 import JobPixel from "../components/Product";
 import Vendoo from "../components/Product";
+
+import { motion } from "framer-motion";
 
 export default function Home() {
     const vendoo = `<span>Vendoo</span> is an e-commerce platform 
@@ -67,33 +67,105 @@ export default function Home() {
     internationally renowned names such as the <span>UN</span> & the <span>IOC.</span>`;
 
     const team_2 = `We’re more than proud of the +70,000 hours we’ve worked to deliver succesful 
-    digital products in different industries. <span>See some of it.</span>`
+    digital products in different industries. <span>See some of it.</span>`;
+
+    let easing = [0.6, -0.05, 0.01, 0.99];
+
+    const stagger = {
+        animate: {
+            transition: {
+                staggerChildren: 0.05,
+            },
+        },
+    };
+
+    const fadeInUp = {
+        initial: {
+            y: 60,
+            opacity: 0,
+            transition: { duration: 0.6, ease: easing },
+        },
+        animate: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: easing,
+            },
+        },
+    };
+
+    const animOpacity = {
+        initial: {
+            opacity: 0,
+            transition: { duration: 0.6, ease: easing },
+        },
+        animate: {
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: easing,
+            },
+        },
+    };
+
+    const fadeRight = {
+        initial: {
+            x: 60,
+            opacity: 0,
+            transition: { duration: 0.6, ease: easing },
+        },
+        animate: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: easing,
+            },
+        },
+    };
 
     return (
-        <>
+        <motion.div initial="initial" animate="animate" exit={{ opacity: 0 }}>
             <section className={styles.home}>
-                <div>
+                <motion.div variants={stagger}>
                     <div>
-                        <h1>{`We’re bringing 
+                        <motion.h1 variants={fadeInUp}>{`We’re bringing 
                     software development 
-                    to the next level.`}</h1>
-                        <h3>Talk to our Business Specialist!</h3>
+                    to the next level.`}</motion.h1>
+                        <motion.h3 variants={fadeInUp}>
+                            Talk to our Business Specialist!
+                        </motion.h3>
                     </div>
-                    <button>Schedule a meeting</button>
-                </div>
+                    <motion.button variants={fadeInUp}>
+                        Schedule a meeting
+                    </motion.button>
+                </motion.div>
             </section>
 
-            <section className={styles.team}>
+            <motion.section
+                variants={stagger}
+                className={styles.team}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true, amount: 0.8 }}
+            >
                 <div className={styles.box_top}>
-                    <img src="/img/bg.svg" alt="" srcSet="" />
+                    <motion.img  variants={animOpacity} src="/img/bg.svg" alt="" srcSet="" />
                     <div>
-                        <h2 dangerouslySetInnerHTML={{ __html: team }}></h2>
+                        <motion.h2
+                            variants={fadeInUp}
+                            dangerouslySetInnerHTML={{ __html: team }}
+                        ></motion.h2>
                     </div>
                 </div>
                 <div className={styles.box_below}>
-                    <h4 dangerouslySetInnerHTML={{ __html: team_2 }}></h4>
+                    <motion.h4
+                        variants={fadeInUp}
+                        dangerouslySetInnerHTML={{ __html: team_2 }}
+                    ></motion.h4>
                 </div>
-            </section>
+            </motion.section>
 
             <Vendoo
                 text={vendoo}
@@ -139,15 +211,24 @@ export default function Home() {
             />
 
             <section className={styles.specialties}>
-                <div>
+                <motion.div
+                    variants={stagger}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true, amount: 0.8 }}
+                >
                     <div className={styles.container_text}>
-                        <h1>Specialties</h1>
-                        <h2
+                        <motion.h1 variants={fadeInUp}>Specialties</motion.h1>
+                        <motion.h2
+                            variants={fadeInUp}
                             dangerouslySetInnerHTML={{ __html: specialties }}
-                        ></h2>
+                        ></motion.h2>
                     </div>
 
-                    <div className={styles.container_icon}>
+                    <motion.div
+                        className={styles.container_icon}
+                        variants={fadeInUp}
+                    >
                         {dataSpecialties.map((el) => (
                             <div key={el.id}>
                                 <div className={styles.wrapper_icon}>
@@ -160,32 +241,44 @@ export default function Home() {
                                 <span>{el.title}</span>
                             </div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </section>
 
             <section className={styles.contact}>
                 <div className={styles.container}>
-                    <div>
-                        <h1>Let’s talk!</h1>
-                        <h2>{`Fill out the form or send 
+                    <motion.div
+                        variants={stagger}
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true, amount: 0.8 }}
+                    >
+                        <motion.h1 variants={fadeInUp}>Let’s talk!</motion.h1>
+                        <motion.h2
+                            variants={fadeInUp}
+                        >{`Fill out the form or send 
                         us an email, so we can 
                         see how we can help
-                        you.`}</h2>
+                        you.`}</motion.h2>
 
-                        <h2
+                        <motion.h2
                             className={styles.desktop}
+                            variants={fadeInUp}
                         >{`You can also schedule a 
-                        meeting with Fernando!`}</h2>
+                        meeting with Fernando!`}</motion.h2>
 
-                        <a
+                        <motion.a
+                            variants={fadeInUp}
                             href="mailto:hi@nextly.team"
                             className={styles.email}
                         >
                             hi@nextly.team
-                        </a>
+                        </motion.a>
 
-                        <div className={styles.mobile}>
+                        <motion.div
+                            className={styles.mobile}
+                            variants={fadeInUp}
+                        >
                             <Box
                                 component="form"
                                 sx={{
@@ -229,67 +322,76 @@ export default function Home() {
 
                             <h2>{`You can also schedule a 
                         meeting with Fernando!`}</h2>
-                        </div>
+                        </motion.div>
 
-                        <Button
-                            variant="outlined"
-                            sx={{
-                                width: "100%",
-                                color: "#fff",
-                                borderRadius: "50px",
-                                padding: "10px 20px",
-                                background:
-                                    "linear-gradient(270deg,rgba(0, 49, 102, 1) 0%,rgba(0, 122, 255, 1) 100%)",
-                                border: 0,
-                            }}
-                        >
-                            Schedule a meet
-                        </Button>
-                    </div>
-                    <div className={styles.desktop}>
-                        <Box
-                            component="form"
-                            sx={{
-                                "& > :not(style)": { width: "100%" },
-                            }}
-                            noValidate
-                            autoComplete="off"
-                        >
-                            <TextField
-                                id="outlined-basic"
-                                // label="Full Name*"
-                                // variant="outlined"
-                                placeholder="Full Name*"
-                            />
+                        <motion.div variants={fadeInUp}>
+                            <Button
+                                variant="outlined"
+                                sx={{
+                                    width: "100%",
+                                    color: "#fff",
+                                    borderRadius: "50px",
+                                    padding: "10px 20px",
+                                    background:
+                                        "linear-gradient(270deg,rgba(0, 49, 102, 1) 0%,rgba(0, 122, 255, 1) 100%)",
+                                    border: 0,
+                                }}
+                            >
+                                Schedule a meet
+                            </Button>
+                        </motion.div>
+                    </motion.div>
+                    <motion.div
+                        initial="initial"
+                        whileInView="animate"
+                        viewport={{ once: true, amount: 0.8 }}
+                        className={styles.desktop}
+                    >
+                        <motion.div variants={fadeRight}>
+                            <Box
+                                component="form"
+                                sx={{
+                                    "& > :not(style)": { width: "100%" },
+                                }}
+                                noValidate
+                                autoComplete="off"
+                            >
+                                <TextField
+                                    id="outlined-basic"
+                                    // label="Full Name*"
+                                    // variant="outlined"
+                                    placeholder="Full Name*"
+                                />
 
-                            <TextField
-                                id="outlined-basic"
-                                placeholder="E-mail*"
-                            />
+                                <TextField
+                                    id="outlined-basic"
+                                    placeholder="E-mail*"
+                                />
 
-                            <TextField
-                                id="outlined-basic"
-                                placeholder="Company*"
-                            />
+                                <TextField
+                                    id="outlined-basic"
+                                    placeholder="Company*"
+                                />
 
-                            <TextField
-                                // id="outlined-multiline-static"
-                                // label="Multiline"
-                                multiline
-                                rows={4}
-                                placeholder="Tell us a bit of your idea"
-                            />
+                                <TextField
+                                    // id="outlined-multiline-static"
+                                    // label="Multiline"
+                                    multiline
+                                    rows={4}
+                                    placeholder="Tell us a bit of your idea"
+                                />
 
-                            {/* <button>Send</button> */}
-                            <button className={styles.btn_gradient}>
-                                Send
-                            </button>
+                                {/* <button>Send</button> */}
+                                <button className={styles.btn_gradient}>
+                                    Send
+                                </button>
 
-                            {/* <Button variant="outlined">Send</Button> */}
-                        </Box>
-                    </div>
+                                {/* <Button variant="outlined">Send</Button> */}
+                            </Box>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </section>
-        </>
+        </motion.div>
     );
 }

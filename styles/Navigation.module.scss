@@ -8,6 +8,7 @@ nav.navigation {
     padding: 40px 100px;
     align-items: center;
     z-index: 99;
+    transition: all 1s;
 
     @media (max-width: 576px) {
         padding: 40px;
@@ -26,6 +27,26 @@ nav.navigation {
                 color: #fff;
                 font-family: "Space Grotesk", sans-serif;
                 font-weight: 500;
+                overflow: hidden;
+                display: flex;
+                padding: 6px;
+
+                span {
+                    position: relative;
+                    transition: 0.3s;
+
+                    &:before {
+                        position: absolute;
+                        content: attr(data-text);
+                        transform: translateY(130%);
+                    }
+                }
+
+                &:hover {
+                    span {
+                        transform: translateY(-130%);
+                    }
+                }
             }
         }
     }
@@ -71,6 +92,13 @@ nav.navigation {
             }
         }
     }
+
+    input {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    
 }
 
 .menu {
