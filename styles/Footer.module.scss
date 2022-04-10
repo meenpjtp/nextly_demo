@@ -1,0 +1,116 @@
+footer.footer {
+    .wrapper {
+        padding: 0 20px;
+    }
+    .box_top {
+        background-color: #000;
+        display: flex;
+
+        span,
+        li,
+        a {
+            color: #fff;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: space-between;
+            padding: 100px;
+
+            > div {
+                width: 20%;
+
+                span {
+                    font-family: "Space Grotesk", sans-serif;
+                    font-weight: 700;
+                    display: block;
+                    margin-bottom: 20px;
+                    font-size: 18px;
+                }
+
+                li,
+                span {
+                    line-height: 20px;
+                }
+
+                li,
+                a {
+                    font-family: "Inter", sans-serif;
+                    font-size: 16px;
+                }
+            }
+
+            .mobile {
+                display: none;
+            }
+
+            ul.follow {
+                display: flex;
+                li {
+                    padding: 0 5px;
+                }
+            }
+
+            @media (max-width: 1024px) {
+                padding: 100px 40px 60px;
+
+                > div {
+                    width: 100%;
+                    margin-bottom: 60px;
+
+                    &:nth-child(5) {
+                        margin-bottom: 0;
+                    }
+
+                    span,
+                    li {
+                        text-align: center;
+                    }
+                }
+
+                .mobile {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .desktop {
+                    display: none;
+                }
+
+                ul.follow {
+                    // display: flex;
+                    justify-content: center;
+                    li {
+                        // padding: 0 5px;
+
+                        img {
+                            width: 37px;
+                        }
+                    }
+                }
+
+                .contact {
+                    li {
+                        margin-bottom: 20px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .box_bottom {
+        background-color: #161719;
+        padding: 20px;
+        span {
+            color: #fff;
+            font-family: "Rubik", sans-serif;
+            display: block;
+            text-align: center;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+section.person {
+    // min-height: 100vh;
+    padding: 60px 100px;
+
+    @media (max-width: 576px) {
+        padding: 60px 40px;
+    }
+
+    h2 {
+        white-space: pre-line;
+        text-align: center;
+        margin-bottom: 80px;
+        color: #161719;
+        line-height: 30px;
+        font-size: 25px;
+
+        @media (max-width: 992px) {
+            white-space: normal;
+        }
+    }
+
+    span {
+        color: #8c8c8c;
+        font-family: "Space Grotesk", sans-serif;
+        display: block;
+        text-align: center;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    img {
+        width: 100px;
+        display: block;
+        margin: auto auto 80px;
+    }
+
+    .button {
+        color: #fff;
+        border-radius: 50px;
+        display: block;
+        margin: 20px auto 0;
+        background: linear-gradient(
+            90deg,
+            rgba(0, 122, 255, 1) 0%,
+            rgba(0, 49, 102, 1) 100%
+        );
+        font-family: "Nunito", sans-serif;
+        font-weight: 700;
+        padding: 10px 20px 10px 40px;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background-image: url(/img/ic-btn.svg);
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+}
